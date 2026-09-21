@@ -10,8 +10,7 @@
 #include "cpu_parser.h"
 
 #define PORT 1234
-//#define IP_ADDR "127.0.0.1"
-//#define IP_ADDR "192.168.0.153"
+#define IP_ADDR "127.0.0.1"
 
 #pragma pack(push, 1)
 struct CpuPacket {
