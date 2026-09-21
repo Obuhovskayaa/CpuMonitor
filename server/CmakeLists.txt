@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 3.16)
+project(QtUdpServer VERSION 1.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_AUTOMOC ON) 
+#set(CMAKE_AUTORCC ON)
+
+set(SOURCES
+    src/qcustomplot.cpp
+    src/NetworkManager.cpp
+    src/MainWindow.cpp
+    src/CpuTabsWidget.cpp
+    src/AppCore.cpp
+    main.cpp
+)
+set(HEADERS
+    include/AppCore.h
+    include/NetworkManager.h
+    include/MainWindow.h
+    include/CpuTabsWidget.h
+    include/qcustomplot.h
+)
+
+find_package(Qt6 REQUIRED COMPONENTS
+    Core
+    Widgets
+    Network
+    PrintSupport
+)
+
+add_executable(QtUdpServer
+    ${SOURCES}
+    ${HEADERS}
+)
+
+target_include_directories(QtUdpServer PRIVATE include)
+
+target_link_libraries(QtUdpServer PRIVATE
+    Qt6::Core
+    Qt6::Widgets
+    Qt6::Network
+    Qt6::PrintSupport
+)
+
+
