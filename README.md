@@ -38,6 +38,12 @@ The graphical interface is entirely written by hand, without using Qt Designer.
 The **QCustomPlot** library is used to create graphs.
 The application is waiting to receive the first data packet in order to determine the exact number of cores. After receiving the data, it creates separate user interface tabs with graphs for each processor core, as well as a tab with general information about the system load.
 
+**Total CPU load**
+![Total Load](assets/graph2.png)
+
+**Per-core load**
+![Per-Core Load](assets/graph3.png)
+
 ### Build and run
 
 You can just open the project file **CMakeLists.txt** directly in **Qt Creator**, select Qt 6 Kit, and hit the **Run** button.
