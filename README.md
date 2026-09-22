@@ -2,6 +2,32 @@
 
 A system for collecting and visualizing data on CPU core load.
 
+<details>
+<summary><code> View Technical Specification </code></summary>
+
+### Test Assignment: Programmer (Qt / C++ / Linux)
+
+The test assignment is divided into 3 subtasks. Implementation of the mandatory functionality is required for successful completion. The implementation of additional functionality is highly encouraged and will be considered a significant advantage during candidacy review.
+
+#### 1. CPU Load Data Collection and Processing in Linux
+Information regarding total and per-core CPU utilization is stored within `/proc/stat`.
+The data handler must be written in **pure C** without utilizing any third-party frameworks or external libraries, providing the following features:
+*   **Mandatory Functionality:** Calculate the total CPU utilization percentage at the time of the latest data sample.
+*   **Additional Functionality:** Calculate per-core CPU utilization with automated core-count detection.
+*   **Sampling Rate:** The `/proc/stat` polling frequency must be exactly 1 Hz.
+
+#### 2. Console UDP Client
+The console UDP client must be written in **pure C** and implemented as a module of Subtask 1. Output metrics (total or per-core CPU workload) must be transmitted to the UDP destination `localhost:1234` at the `/proc/stat` polling frequency (1 Hz). The application-level data transmission protocol is left to the developer's discretion.
+
+#### 3. Qt UDP Server
+Upon startup, the Qt UDP server must open a socket bound to `localhost:1234`, capture incoming data packets transmitted by the UDP client, and render them as a real-time timeline graph synchronized with the incoming data frequency.
+*   **Visualization:** It is highly recommended to use the `QCustomPlot` library for rendering charts.
+*   **UI Layout bonus:** Building the entire user interface programmatically from scratch in source code (strictly avoiding Qt Designer and `.ui` XML files) will be considered a significant plus for the candidate.
+*   **Per-Core Rendering:** When visualizing per-core workloads, each CPU core graph line must be rendered using its own unique color.
+
+</details>
+
+
 ## 1. Client / Parser
 
 This part is a lightweight Linux service written in **pure C**.
